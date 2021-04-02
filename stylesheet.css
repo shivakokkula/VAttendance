@@ -1,0 +1,167 @@
+html,body{
+
+    margin:0;
+    padding: 0;
+}
+#Table{
+    font-size: x-large;
+    background-color: rgb(41, 191, 211);
+    text-align: center;
+    min-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+.note{
+    background-color:#66ff66;
+    border-left:6px solid #009900;
+    font-size: 25px;
+    margin-left:10%;
+    margin-right: 10%;
+    text-align: center;
+}/*
+#Table2{
+    display: none;
+}
+*/
+#tr{
+    height: 10%;
+}
+input{
+    font-size: x-large;
+}
+#AllPresent{
+    width: 25px;
+    height: 25px;
+}
+
+#null{
+    padding: 0%;
+}
+/*
+.Hours{
+    width: 6%;
+    height: 20px;
+}
+*/
+
+#gif{
+    background-color: black;
+    color: chartreuse;
+    font-size: 190%;
+    line-height: 0%;
+    display: none;
+    text-align: center;
+}
+#h6{
+    display: inline-block;
+    padding: 0%;
+}
+#mark{
+    margin-top: 15%;
+    margin-bottom: 10%;
+    width: 100%;
+}
+#header{
+    background:linear-gradient(#302b63,#24243e);;
+    /*
+    background-color: goldenrod;
+    */text-align: center;
+    font-size: 40px;
+    width: 100%;
+    padding: 0.5%;
+    margin: 0%;
+    display: inline-block;
+    color:white;
+}
+#branchsemdiv,#batch,#prof,#time,#hour{
+    display: inline;
+}
+#time,#hour,#batch{
+    margin-left: 5%;
+}
+#AttendanceSection{
+    text-align: center;
+    margin:0%;
+    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    font-size: 20px;
+    background: linear-gradient(#302b63,#24243e);;
+    /*background-color: rgb(211, 137, 41);
+    */padding: 0.7%;
+    line-height: large;
+    display: inline-block;
+}
+
+button{
+
+    color:orange;
+    background-color:black;
+    display:inline;
+    margin:8px;
+    margin-bottom:5px;
+    font-size:15px;
+    font-weight:bold;
+    padding:5px;
+}
+#MarkAttendance{
+    font-size: 20px;
+    /*text-size-adjust: auto; 
+    */color:#ffd11a;
+    border:2px solid #ffd11a;
+
+}
+
+
+#MarkAttendance:hover{
+    color:white;
+    cursor:pointer;
+}
+
+#Update{
+    font-size: 20px;
+    margin: 0%;
+    margin-left: 10%;
+    color:#ffd11a;
+    border:2px solid #ffd11a;
+  
+    padding: 10px;
+}
+
+#Update:hover{
+    color:white;
+    cursor:pointer;
+}
+
+#MarkCheckbox{
+    font-size: 20px;
+    margin: 0%;
+    color:#ffd11a;
+    border:2px solid #ffd11a;
+  
+    padding: 10px;
+}
+
+#MarkCheckbox:hover{
+    color:white;
+    cursor:pointer;
+}
+
+
+#GenerateExcelSheet{
+    font-size: 20px;
+    margin: 0%;
+    margin-left: 10% ;
+    color:#ffd11a;
+    border:2px solid #ffd11a;
+  
+    padding: 10px;
+}
+
+#GenerateExcelSheet:hover{
+    color:white;
+    cursor:pointer;
+}

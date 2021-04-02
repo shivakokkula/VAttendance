@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link type="text/css" href="stylesheet1.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.min.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.structure.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.structure.min.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.theme.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.theme.min.css" rel="stylesheet">
+
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+</head>
+<body id="welcomepage">
+	<div id="sidebar">
+		<ul class="verticalMenu">
+			<li id="branch1" class="branch">CMPN &nbsp&nbsp&nbsp&nbsp>
+				<ul class="verticalMenu">
+					<li id="cmpn1" class="year">1ST YEAR &nbsp&nbsp>
+						<ul class="verticalMenu">
+							<li id="csem1" class="seme">SEM1 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="cdiv11" class="sub1"><a onclick="sem('CMPN','DIV A','SEM 1','YEAR 1')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv12" class="sub1"><a onclick="sem('CMPN','DIV B','SEM 1','YEAR 1')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv13" class="sub1"><a onclick="sem('CMPN','DIV C','SEM 1','YEAR 1')">DIV C</a></li>
+								
+								</ul>
+							</li>
+							<li>-</li>
+							<li id="csem2" class="seme">SEM2 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="cdiv21" class="sub1"><a onclick="sem('CMPN','DIV A','SEM 2')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv22" class="sub1"><a onclick="sem('CMPN','DIV B','SEM 2')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv23" class="sub1"><a onclick="sem('CMPN','DIV C','SEM 2')">DIV C</a></li>
+								
+								</ul>
+							</li>
+				
+						</ul>
+					</li>
+					<li>-</li>
+					<li id="cmpn2" class="year">2ND YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li id="csem3" class="seme">SEM3 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="cdiv31" class="sub1"><a onclick="sem('CMPN','DIV A','SEM 3')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv32" class="sub1"><a onclick="sem('CMPN','DIV B','SEM 3')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv33" class="sub1"><a onclick="sem('CMPN','DIV C','SEM 3')">DIV C</a></li>
+						
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="csem4">SEM4 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="cdiv41" class="sub1"><a onclick="sem('CMPN','DIV A','SEM 4')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv42" class="sub1"><a onclick="sem('CMPN','DIV B','SEM 4')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv43" class="sub1"><a onclick="sem('CMPN','DIV C','SEM 4')">DIV C</a></li>
+								
+								</ul>
+							</li>
+		
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="cmpn3">3RD YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="csem5">SEM5 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="cdiv51" class="sub1"><a onclick="sem('CMPN','DIV A','SEM 5')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv52" class="sub1"><a onclick="sem('CMPN','DIV B','SEM 5')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv53" class="sub1"><a onclick="sem('CMPN','DIV C','SEM 5')">DIV C</a></li>
+								
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="csem6">SEM6 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="cdiv61" class="sub1"><a onclick="Csem6('CMPN','DIV A','SEM 6')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv62" class="sub1"><a onclick="Csem6('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv63" class="sub1"><a onclick="Csem6('DIV C')">DIV C</a></li>
+								
+								</ul>
+							</li>
+					
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="cmpn4">4TH YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="csem7">SEM7 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="cdiv71" class="sub1"><a onclick="Csem7('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv72" class="sub1"><a onclick="Csem7('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv73" class="sub1"><a onclick="Csem7('DIV C')">DIV C</a></li>
+							
+								</ul>
+							</li>
+							<li>-</li>
+							<li id="csem8" class="seme">SEM8 &nbsp>
+								<ul class="verticalMenu">
+									<li id="cdiv81" class="sub1"><a onclick="Csem8('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="cdiv82" class="sub1"><a onclick="Csem8('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="cdiv83" class="sub1"><a onclick="Csem8('DIV C')">DIV C</a></li>
+						
+								</ul>
+							</li>
+					
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+			<li class="line">-</li>
+			<li id="branch2" class="branch">IT &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp>
+				<ul class="verticalMenu">
+					<li id="it1" class="year">1ST YEAR &nbsp&nbsp>
+						<ul class="verticalMenu">
+							<li id="itsem1" class="seme">SEM1 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="itdiv11"1class="sub1"><a onclick="sem('INFT','DIV A','SEM 1','YEAR 1')">DIV A</a></li>
+									<li>-</li>
+									<li id="itdiv12" class="sub1"><a onclick="sem('INFT','DIV B','SEM 1','YEAR 1')">DIV B</a></li>
+									<li>-</li>
+									<li id="itdiv13" class="sub1"><a onclick="sem('INFT','DIV C','SEM 1','YEAR 1')">DIV C</a></li>
+						
+								</ul>
+							</li>
+							<li>-</li>
+							<li id="itsem2" class="seme">SEM2 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="itdiv21" class="sub1"><a onclick="sem2('INFT','DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="itdiv22" class="sub1"><a onclick="sem2('INFT','DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="itdiv23" class="sub1"><a onclick="sem2('INFT','DIV C')">DIV C</a></li>
+							
+								</ul>
+							</li>
+						
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="it2">2ND YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li id="itsem3" class="seme">SEM3 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="itdiv31"class="sub1"><a onclick="Isem3('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="itdiv32"class="sub1"><a onclick="Isem3('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="itdiv33"class="sub1"><a onclick="Isem3('DIV C')">DIV C</a></li>
+							
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="itsem4">SEM4 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="itdiv41" class="sub1"><a onclick="Isem4('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="itdiv42" class="sub1"><a onclick="Isem4('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="itdiv43" class="sub1"><a onclick="Isem4('DIV C')">DIV C</a></li>
+								
+								</ul>
+							</li>
+						
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="it3">3RD YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="itsem5">SEM5 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="itdiv51" class="sub1"><a onclick="Isem5('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="itdiv52" class="sub1"><a onclick="Isem5('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="itdiv53" class="sub1"><a onclick="Isem5('DIV C')">DIV C</a></li>
+								
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="itsem6">SEM6 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="itdiv61" class="sub1"><a onclick="Isem6('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="itdiv62" class="sub1"><a onclick="Isem6('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="itdiv63" class="sub1"><a onclick="Isem6('DIV C')">DIV C</a></li>
+					
+								</ul>
+							</li>
+							
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="it4">4TH YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="itsem7">SEM7 &nbsp>
+								<ul class="verticalMenu">
+
+									<li id="itdiv71" class="sub1"><a onclick="Isem7('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li id="itdiv72" class="sub1"><a onclick="Isem7('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li id="itdiv73" class="sub1"><a onclick="Isem7('DIV C')">DIV C</a></li>
+									
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="itsem8">SEM8 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="itdiv81"><a onclick="Isem8('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="itdiv82"><a onclick="Isem8('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="itdiv83"><a onclick="Isem8('DIV C')">DIV C</a></li>
+						
+								</ul>
+							</li>
+						
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+			<li>-</li>
+			<li class="branch" id="branch4">EXTC &nbsp&nbsp&nbsp&nbsp&nbsp>
+				<ul class="verticalMenu">
+					<li id="ex1" class="year">1ST YEAR &nbsp&nbsp>
+						<ul class="verticalMenu">
+							<li id="exsem1" class="seme">SEM1 &nbsp>
+								<ul class="verticalMenu4">
+
+									<li class="sub1" id="exdiv11"><a onclick="sem1('EXTC','DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv12"><a onclick="sem1('EXTC','DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv13"><a onclick="sem1('EXTC','DIV C')">DIV C</a></li>
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="exsem2">SEM2 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="exdiv21"><a onclick="sem2('EXTC','DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv22"><a onclick="sem2('EXTC','DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv23"><a onclick="sem2('EXTC','DIV C')">DIV C</a></li>
+								</ul>
+							</li>
+			
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="ex2">2ND YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="exsem3">SEM3 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="exdiv31"><a onclick="Esem3('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv32"><a onclick="Esem3('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv33"><a onclick="Esem3('DIV C')">DIV C</a></li>
+					
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="exsem4">SEM4 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="exdiv41"><a onclick="Esem4('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv42"><a onclick="Esem4('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv43"><a onclick="Esem4('DIV C')">DIV C</a></li>
+							
+								</ul>
+							</li>
+						
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="ex3">3RD YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="exsem5">SEM5 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="exdiv51"><a onclick="Esem5('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv52"><a onclick="Esem5('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv53"><a onclick="Esem5('DIV C')">DIV C</a></li>
+							
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="exsem6">SEM6 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="exdiv61"><a onclick="Esem6('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv62"><a onclick="Esem6('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv63"><a onclick="Esem6('DIV C')">DIV C</a></li>
+								
+								</ul>
+							</li>
+							
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="ex4">4TH YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="exsem7">SEM7 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="exdiv71"><a onclick="Esem7('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv72"><a onclick="Esem7('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv73"><a onclick="Esem7('DIV C')">DIV C</a></li>
+				
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="exsem8">SEM8 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="exdiv81"><a onclick="Esem8('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv82"><a onclick="Esem8('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="exdiv83"><a onclick="Esem8('DIV C')">DIV C</a></li>
+								
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+			<li>-</li>
+			<li class="branch" id="branch3">ETRX &nbsp&nbsp&nbsp&nbsp&nbsp>
+				<ul class="verticalMenu">
+					<li class="year" id="et1">1ST YEAR &nbsp&nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="etsem1">SEM1 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="etdiv11"><a onclick="sem1('ETRX','DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv12"><a onclick="sem1('ETRX','DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv13"><a onclick="sem1('ETRX','DIV C')">DIV C</a></li>
+								
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="etsem2">SEM2 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="etdiv21"><a onclick="sem2('ETRX','DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv22"><a onclick="sem2('ETRX','DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv23"><a onclick="sem2('ETRX','DIV C')">DIV C</a></li>
+									
+								</ul>
+							</li>
+					
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="et2">2ND YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="etem3">SEM3 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="etdiv31"><a onclick="ETsem3('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv32"><a onclick="ETsem3('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv33"><a onclick="ETsem3('DIV C')">DIV C</a></li>
+									
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="etsem4">SEM4 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="etdiv41"><a onclick="ETsem4('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv42"><a onclick="ETsem4('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv43"><a onclick="ETsem4('DIV C')">DIV C</a></li>
+								
+								</ul>
+							</li>
+				
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="et3">3RD YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="etsem5">SEM5 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="etdiv51"><a onclick="ETsem5('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv52"><a onclick="ETsem5('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv53"><a onclick="ETsem5('DIV C')">DIV C</a></li>
+									
+								</ul>
+							</li>
+							<li>-</li>
+							<li id="exsem6" class="seme" id="etsem6">SEM6 &nbsp>
+								<ul class="verticalMenu" >
+
+									<li class="sub1" id="etdiv61"><a onclick="ETsem6('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv62"><a onclick="ETsem6('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv63"><a onclick="ETsem6('DIV C')">DIV C</a></li>
+									
+								</ul>
+							</li>
+						
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="et4">4TH YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="etsem7">SEM7 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="etdiv71"><a onclick="ETsem7('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv72"><a onclick="ETsem7('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv73"><a onclick="ETsem7('DIV C')">DIV C</a></li>
+	
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="etsem8">SEM8 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="etdiv81"><a onclick="ETsem8('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv82"><a onclick="ETsem8('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="etdiv83"><a onclick="ETsem8('DIV C')">DIV C</a></li>
+								</ul>
+							</li>
+					
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+			<li id="last">-</li>
+			<li class="branch" id="branch5">BIOMED >
+				<ul class="verticalMenu">
+					<li class="year" id="bi1">1ST YEAR &nbsp&nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="bisem1">SEM1 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="bidiv11"><a onclick="sem1('BIOMED','DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv12"><a onclick="sem1('BIOMED','DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv13"><a onclick="sem1('BIOMED','DIV C')">DIV C</a></li>
+			
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="bisem2">SEM2 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="bidiv21"><a onclick="sem2('BIOMED','DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv22"><a onclick="sem2('BIOMED','DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv23"><a onclick="sem2('BIOMED','DIV C')">DIV C</a></li>
+					
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="bi2">2ND YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="bisem3">SEM3 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="bidiv31"><a onclick="Bsem3('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv32"><a onclick="Bsem3('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv33"><a onclick="Bsem3('DIV C')">DIV C</a></li>
+						
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="bisem4">SEM4 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="bidiv41"><a onclick="Bsem4('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv42"><a onclick="Bsem4('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv43"><a onclick="Bsem4('DIV C')">DIV C</a></li>
+							
+								</ul>
+							</li>
+					
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="bi3">3RD YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="bisem5">SEM5 &nbsp>
+								<ul class="verticalMenu">
+
+									<li class="sub1" id="bidiv51"><a onclick="Bsem5('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv52"><a onclick="Bsem5('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv53"><a onclick="Bsem5('DIV C')">DIV C</a></li>
+						
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="bisem6">SEM6 &nbsp>
+								<ul class="verticalMenu">
+									<li class="sub1" id="bidiv61"><a onclick="Bsem6('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv62"><a onclick="Bsem6('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv63"><a onclick="Bsem6('DIV C')">DIV C</a></li>
+					
+								</ul>
+							</li>
+				
+						</ul>
+					</li>
+					<li>-</li>
+					<li class="year" id="bi4">4TH YEAR &nbsp>
+						<ul class="verticalMenu">
+							<li class="seme" id="bisem7">SEM7 &nbsp>
+								<ul class="verticalMenu">
+									<li class="sub1" id="bidiv71"><a onclick="Bsem7('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv72"><a onclick="Bsem7('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv73"><a onclick="Bsem7('DIV C')">DIV C</a></li>
+					
+								</ul>
+							</li>
+							<li>-</li>
+							<li class="seme" id="bisem8">SEM8 &nbsp>
+								<ul class="verticalMenu">
+									<li class="sub1" id="bidiv81"><a onclick="Bsem8('DIV A')">DIV A</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv82"><a onclick="Bsem8('DIV B')">DIV B</a></li>
+									<li>-</li>
+									<li class="sub1" id="bidiv83"><a onclick="Bsem8('DIV C')">DIV C</a></li>
+						
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id="headerl22">
+	<b id="bold">V &nbspATTENDENCE	</b>
+	<button id="logout" onclick="logout()">LOGOUT</button>
+	</div>
+
+	<div id="dropdown">
+		<label for="batch" id="batchn">Batch:</label>
+		<select id="batch">
+			<option id="All">All</option>
+			<option id="batch1">BATCH 1</option>
+			<option id="batch2">BATCH 2</option>
+			<option id="batch3">BATCH 3</option>
+		</select>
+		<label id="Hours" for="Hours" >No Of Hours : </label>
+		<input type="radio" class="Hours" name="Hours" onclick="Hours()" value="1" id="Hours1">1</input>
+		<input type="radio" class="Hours" name="Hours" onclick="Hours()" value="2" id="Hours2">2</input>
+		<input type="radio" class="Hours" name="Hours" onclick="Hours()" value="3" id="Hours3">3</input>	
+		<label id="Timeslot" for="timeslot">Time Slot:</label>
+		<select id="timeslot">
+			<option id="timeslot1">8:00 AM</option>
+			<option id="timeslot2">9:00 AM</option>
+			<option id="timeslot3">10:00 AM</option>
+			<option id="timeslot4">11:15 AM</option>
+        	<option id="timeslot5">12:15 PM</option>
+        	<option id="timeslot6">1:45 PM</option>
+			<option id="timeslot7">2:45 PM</option>
+			<option id="timeslot8">3:45 PM</option>
+        	<option id="timeslot9">4:45 PM</option>
+	    </select>
+
+	</div>
+	<div id="dropdown1">
+		<label id="Hours" for="Hours" >Lecture Type :</label>
+		<input type="radio" class="Hours" name="thprac"  onclick="myFunction(this.value)" value="THEORY" id="th">THEORY</input>
+		<input type="radio" class="Hours" name="thprac"  onclick="myFunction(this.value)" value="PRACTICAL" id="prac">PRACTICAL</input>
+	</div>
+	<div id="WELCOME1">
+	<div id="innerwel">
+		<h1 id="welcome">WELCOME &nbsp&nbspTO &nbsp&nbspV &nbspATTENDENCE</h1>
+	</div>
+	<div id="maincon">	
+		<img id="wel" src="inner.jpg">
+	</div>
+	</div>
+
+<!--
+	<div id="SEM1">
+		<div id="contentl2">		
+			<button class="sub" id="sub1" onclick="pass1('SEM 1')"> ENGINEERING MATHEMATICS 1 </button>
+			<button class="sub" id="sub2" onclick="pass1('SEM 1')"> ENGINEERING PHYSICS 1 </button>
+			<button class="sub" id="sub3" onclick="pass1('SEM 1')"> ENGINEERING CHEMISTRY 1 </button>
+			<button class="sub" id="sub4" onclick="pass1('SEM 1')"> ENGINEERING MECHANICS </button>
+			<button class="sub" id="sub5" onclick="pass1('SEM 1')"> BASIC ELECTRICAL ENGINEERING </button>
+			<button class="sub" id="sub6" onclick="pass1('SEM 1')"> ENGINEERING PHYSICS 1 LAB </button>
+			<button class="sub" id="sub1" onclick="pass1('SEM 1')"> ENGINEERING CHEMISTRY 1 LAB </button>
+			<button class="sub" id="sub2" onclick="pass1('SEM 1')"> ENGINEERING MECHANICS LAB </button>
+			<button class="sub" id="sub3" onclick="pass1('SEM 1')"> BASIC ELECTRICAL ENGINEERING LAB </button>
+			<button class="sub" id="sub7" onclick="pass1('SEM 1')"> BASIC WORKSHOP PRACTICE 1 </button>
+		</div>
+	</div>
+
+	<div id="SEM2">
+		<div id="contentl2">	
+			<button class="sub2" id="sub1" onclick="pass1('SEM 2')"> &nbsp&nbsp&nbsp&nbspENGINEERING MATHEMATICS 2 </button>
+			<button class="sub2" id="sub2" onclick="pass1('SEM 2')"> &nbsp&nbsp&nbsp&nbspENGINEERING PHYSICS 2 </button>
+			<button class="sub2" id="sub88" onclick="pass1('SEM 2')"> &nbsp&nbsp&nbsp&nbspENGINEERING CHEMISTRY 2 </button>
+			<button class="sub2" id="sub4" onclick="pass1('SEM 2')"> &nbsp&nbsp&nbsp&nbspENGINEERING GRAPHICS &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </button>
+			<button class="sub2" id="sub5" onclick="pass1('SEM 2')"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspC &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp PROGRAMMING &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  </button>
+			<button class="sub2" id="sub8" onclick="pass1('SEM 2')"> PROFESSIONAL COMMUNICATION & ETHICS 1</button>
+			<button class="sub2" id="sub1" onclick="pass1('SEM 2')"> ENGINEERING PHYSICS 2 LAB </button>
+			<button class="sub2" id="sub2" onclick="pass1('SEM 2')"> ENGINEERING CHEMISTRY 2 LAB </button>
+			<button class="sub2" id="sub3" onclick="pass1('SEM 2')"> ENGINEERING GRAPHICS LAB </button>
+			<button class="sub2" id="sub4" onclick="pass1('SEM 2')"> C &nbsp PROGRAMMING &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub5" onclick="pass1('SEM 2')"> PROFESSIONAL COMMUNICATION AND ETHICS 1 LAB </button>
+			<button class="sub2" id="sub6" onclick="pass1('SEM 2')"> BASIC WORKSHOP &nbsp&nbsp&nbspPRACTICE 2 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+		</div>
+	</div>
+
+	<div id="CSEM3">
+		<div id="contentl2">
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 2','SEM 3','Applied Mathematics-III')"> APPLIED MATHEMATICS III &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 2','SEM 3','Digital Logic')"> DIGITAL LOGIC DESIGN AND ANALYSIS </button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 2','SEM 3','Discrete Mathematics')"> DISCRETE MATHEMATICS &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub4" onclick="pass('CMPN','YEAR 2','SEM 3','Elec. Ckts. & Comm. Fund.')"> ELECTRONIC CIRCUITS AND COMMUNICATION FUNDAMENTALS </button>
+			<button class="sub2" id="sub5" onclick="pass('CMPN','YEAR 2','SEM 3','Data Structures')"> DATA STRUCTURES &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub6" onclick="pass('CMPN','YEAR 2','SEM 3','Digital System Lab')"> &nbsp&nbsp&nbspDIGITAL &nbsp&nbsp&nbsp&nbsp SYSTEM &nbsp LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 2','SEM 3','Basic Electronics Lab')"> BASIC ELECTRONICS LAB </button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 2','SEM 3','Data Structure Lab')"> DATA STRUCTURES LAB </button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 2','SEM 3','OOPM(Java) Lab')"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp OOPM(JAVA)&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp LAB </button>
+		</div>
+	</div>
+
+	<div id="CSEM4">
+		<div id="contentl2">
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 2','SEM 4','Applied Mathematics-IV')"> APPLIED MATHEMATICS 4 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 2','SEM 4','Analysis of Algorithm')"> ANALYSIS OF ALGORITHMS &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 2','SEM 4','Computer Organization')"> COMPUTER ORGANIZATION AND ARCHITECTURE </button>
+			<button class="sub2" id="sub4" onclick="pass('CMPN','YEAR 2','SEM 4','Computer Graphics')"> COMPUTER GRAPHICS </button>
+			<button class="sub2" id="sub5" onclick="pass('CMPN','YEAR 2','SEM 4','Operating System')"> OPERATING SYSTEM </button>
+			<button class="sub2" id="sub6" onclick="pass('CMPN','YEAR 2','SEM 4','Analysis of Algorithm Lab')"> ANALYSIS OF ALGORITHMS LAB </button>
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 2','SEM 4','Computer Graphics Lab')"> COMPUTER GRAPHICS LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 2','SEM 4','Processor Architecture Lab')"> PROCESSOR ARCHITECTURE LAB </button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 2','SEM 4','Operating System Lab')"> OPERATING SYSTEM LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub7" onclick="pass('CMPN','YEAR 2','SEM 4','Open Source Tech Lab')"> OPEN SOURCE TECHNOLOGY LAB </button>
+		</div>
+	</div>
+
+	<div id="CSEM5">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('CMPN','YEAR 3','SEM 5','Microprocessor')">  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp MICROPROCESSOR &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub2" onclick="pass('CMPN','YEAR 3','SEM 5','Database Management')"> DATABASE MANAGEMENT SYSTEM </button>
+			<button class="sub" id="sub3" onclick="pass('CMPN','YEAR 3','SEM 5','Computer Network')"> COMPUTER NETWORK &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub4" onclick="pass('CMPN','YEAR 3','SEM 5','Theory of Computer Sci.')"> THEORY OF COMPUTER SCIENCE </button>
+			<button class="sub" id="sub5" onclick="pass('CMPN','YEAR 3','SEM 5','Multimedia System(Opt)')">Multimedia System(Opt)</button>
+			<button class="sub" id="sub5" onclick="pass('CMPN','YEAR 3','SEM 5','Operating System(Opt)')">Operating System(Opt)</button>
+			<button class="sub" id="sub5" onclick="pass('CMPN','YEAR 3','SEM 5','Advance Algorithm(Opt)')">Advance Algoritm(Opt)</button>
+			<button class="sub" id="sub6" onclick="pass('CMPN','YEAR 3','SEM 5','Microprocessor Lab')"> MICROPROCESSOR LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub1" onclick="pass('CMPN','YEAR 3','SEM 5','Database & Info. Sys. Lab')"> DATABASE AND INFORMATION SYSTEM LAB </button>
+			<button class="sub" id="sub2" onclick="pass('CMPN','YEAR 3','SEM 5','Computer Network Lab')"> COMPUTER NETWORK LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub3" onclick="pass('CMPN','YEAR 3','SEM 5','Web Design Lab')"> &nbsp&nbsp&nbspWEB &nbsp DESIGN &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </button>
+			<button class="sub" id="sub7" onclick="pass('CMPN','YEAR 3','SEM 5','Business Comm. & Ethics')"> BUSINESS COMMUNICATION AND ETHICS </button>
+		</div>
+	</div>
+
+	<div id="CSEM6">
+		<div id="contentl2">
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 3','SEM 6','Software Engineering')"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp SOFTWARE ENGINEERING &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 3','SEM 6','System Programming')"> SYSTEM PROGRAMMING AND COMPILER CONSTRUCTION </button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 3','SEM 6','Data Warehous. & Mining')"> DATA WAREHOUSING AND MINING &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub4" onclick="pass('CMPN','YEAR 3','SEM 6','Cryptography & Security')"> CRYPTOGRAPHY AND SYSTEM SECURITY </button>
+			<button class="sub2" id="sub5" onclick="pass('CMPN','YEAR 3','SEM 6','Machine Learning(Opt)')">Machine Learning(Opt.)</button>
+			<button class="sub2" id="sub5" onclick="pass('CMPN','YEAR 3','SEM 6','Adv. Database Sys.(Opt)')">Advance Database System(Opt)</button>
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 3','SEM 6','Enterprise Resource(Opt)')">Enterprise Resource Planning(Opt)</button>
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 3','SEM 6','Advance Computer Network(Opt)')">Advance Computer Network(Opt)</button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 3','SEM 6','Software Engineering Lab')"> SOFTWARE ENGINEERING LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 3','SEM 6','System Software Lab')"> SYSTEM SOFTWARE LAB &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 3','SEM 6','Data Warehousing & Mining Lab')"> DATA WAREHOUSING AND MINING LAB </button>
+			<button class="sub2" id="sub77" onclick="pass('CMPN','YEAR 3','SEM 6','System Security Lab')"> SYSTEM SECURITY LAB </button>
+			<button class="sub2" id="sub5" onclick="pass('CMPN','YEAR 3','SEM 6','Mini-Project')"> MINI PROJECT &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+		</div>
+	</div>
+
+	<div id="CSEM7">
+		<div id="contentl2">
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 4','SEM 7','Signal & Image Processing')"> DIGITAL SIGNAL AND IMAGE PROCESSING &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 4','SEM 7','Mobile Comm. & Comput.')"> MOBILE COMMUNICATION AND COMPUTING &nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 4','SEM 7','A.I & Soft Computing')"> ARTIFICIAL INTELLIGENCE AND SOFT COMPUTING </button>
+			<button class="sub2" id="sub4" onclick="pass('CMPN','YEAR 4','SEM 7','Adv.Security & Fore.(Opt)')">Advance System Security & Digital forensics(Opt)</button>
+			<button class="sub2" id="sub4" onclick="pass('CMPN','YEAR 4','SEM 7','Big Data& Analytics(Opt)')">Big Data & Analytics(Opt)</button>
+			<button class="sub2" id="sub4" onclick="pass('CMPN','YEAR 4','SEM 7','Robotics(Opt.)')">Robotics(Opt)</button>
+			<button class="sub2" id="sub5" onclick="pass('CMPN','YEAR 4','SEM 7','Institute Level (Opt)-I')"> INSTITUTE LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub2" id="sub6" onclick="pass('CMPN','YEAR 4','SEM 7','Digital Signal & Image Processing Lab')"> DIGITAL SIGNAL AND IMAGE PROCESSING LAB </button>
+			<button class="sub2" id="sub1" onclick="pass('CMPN','YEAR 4','SEM 7','Mobile Communication & Computing Lab')"> MOBILE APP DEVELOPMENT TECHNOLOGY LAB &nbsp&nbsp&nbsp&nbsp&nbsp </button>
+			<button class="sub2" id="sub2" onclick="pass('CMPN','YEAR 4','SEM 7','Artificial Intelligence & Soft Computing Lab ')"> ARTIFICIAL INTELLIGENCE AND SOFT COMPUTING LAB </button>
+			<button class="sub2" id="sub3" onclick="pass('CMPN','YEAR 4','SEM 7','Computational Lab-I')"> COMPUTATIONAL <br> LAB 1 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub2" id="sub7" onclick="pass('CMPN','YEAR 4','SEM 7','Major Project-I')"> MAJOR PROJECT 1 </button>
+			
+		</div>
+	</div>
+
+	<div id="CSEM8">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('CMPN','YEAR 4','SEM 8','Human Machine Interact.')"> HUMAN MACHINE INTERACTION &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub2" onclick="pass('CMPN','YEAR 4','SEM 8','Distributed Computing')"> DISTRIBUTED COMPUTING &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub3" onclick="pass('CMPN','YEAR 4','SEM 8','High Perf. Comput.(Opt)')">High Performance Computing(Opt)</button>
+			<button class="sub" id="sub4" onclick="pass('CMPN','YEAR 4','SEM 8','Natural Lang.Process.(Opt)')">Natural Language Processing(Opt)</button>
+			<button class="sub" id="sub4" onclick="pass('CMPN','YEAR 4','SEM 8','Adhoc(Opt)')">Adhoc Wireless Network(Opt)</button>
+			<button class="sub" id="sub4" onclick="pass('CMPN','YEAR 4','SEM 8','Institute Level(Opt)-II')"> INSTITUTE LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub5" onclick="pass('CMPN','YEAR 4','SEM 8','Human Machine Interaction Lab')"> HUMAN MACHINE INTERACTION LAB &nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub6" onclick="pass('CMPN','YEAR 4','SEM 8','Distributed Computing Lab')"> DISTRIBUTED COMPUTING LAB &nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			<button class="sub" id="sub1" onclick="pass('CMPN','YEAR 4','SEM 8','Cloud Computing Lab')"> CLOUD COMPUTING LAB </button>
+			<button class="sub" id="sub2" onclick="pass('CMPN','YEAR 4','SEM 8','Computational Lab-II')"> COMPUTATIONAL LAB 2 </button>
+			<button class="sub" id="sub3" onclick="pass('CMPN','YEAR 4','SEM 8','Major Project-II')"> MAJOR&nbsp&nbsp&nbsp&nbsp&nbsp PROJECT 2 </button>
+		</div>
+	</div>
+
+	<div id="ISEM3">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 2','SEM 3')"> APPLIED MATHEMATICS 3 </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 2','SEM 3')"> LOGIC DESIGN </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 2','SEM 3')"> DATA STRUCTURES AND ANALYSIS </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 2','SEM 3')"> DATABASE MANAGEMENT SYSTEM </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 2','SEM 3')"> PRINCIPLE OF COMMUNICATIONS </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 2','SEM 3')"> DIGITAL DESIGN LAB </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 2','SEM 3')"> DATA STRUCTURES LAB </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 2','SEM 3')"> SQL LAB </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 2','SEM 3')"> JAVA PROGRAMMING LAB </button>
+		</div>
+	</div>
+
+	<div id="ISEM4">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 2','SEM 4')"> APPLIED MATHEMATICS 4 </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 2','SEM 4')"> COMPUTER NETWORKS </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 2','SEM 4')"> OPERATING SYSTEMS </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 2','SEM 4')"> COMPUTER ORGANIZATION AND ARCHITECTURE </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 2','SEM 4')"> AUTOMATA THEORY </button>
+			<button class="sub" id="sub6" onclick="pass('INFT','YEAR 2','SEM 4')"> NETWORKING LAB </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 2','SEM 4')"> UNIX LAB </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 2','SEM 4')"> MICROPROCESSOR PROGRAMMING LAB </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 2','SEM 4')"> PYTHON LAB </button>
+		</div>
+	</div>
+
+	<div id="ISEM5">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 3','SEM 5')"> MICROCONTROLLER AND EMBEDDED PROGRAMMING </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 3','SEM 5')"> INTERNET PROGRAMMING </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 3','SEM 5')"> ADVANCED DATA MANAGEMENT TECHNOLOGY </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 3','SEM 5')"> CRYPTOGRAPHY AND NETWORK SECURITY </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 3','SEM 5')"> DEPARTMENT LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub6" onclick="pass('INFT','YEAR 3','SEM 5')"> INTERNET PROGRAMMING LAB </button>
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 3','SEM 5')"> SECURITY LAB </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 3','SEM 5')"> OLAP LAB </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 3','SEM 5')"> IOT(MINI PROJECT) LAB </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 3','SEM 5')"> BUSINESS COMMUNICATION AND ETHICS </button>
+		</div>
+	</div>
+
+	<div id="ISEM6">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 3','SEM 6')"> SOFTWARE ENGINEERING WITH PROJECT MANAGEMENT </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 3','SEM 6')"> DATA MINING AND BUSINESS INTELLIGENCE </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 3','SEM 6')"> CLOUD COMPUTING AND SERVICES </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 3','SEM 6')"> WIRELESS NETWORKS </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 3','SEM 6')"> DEPARTMENT LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub6" onclick="pass('INFT','YEAR 3','SEM 6')"> SOFTWARE DESIGN LAB </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 3','SEM 6')"> BUSINESS INTELLIGENCE LAB </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 3','SEM 6')"> CLOUD SERVICE DESIGN LAB </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 3','SEM 6')"> SENSOR NETWORK LAB </button>
+			<button class="sub" id="sub6" onclick="pass('INFT','YEAR 3','SEM 6')"> MINI PROJECT </button>
+		</div>
+	</div>
+
+	<div id="ISEM7">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 4','SEM 7')"> ENTERPRISE NETWORK DESIGN </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 4','SEM 7')"> INFRASTRUCTURE SECURITY </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 4','SEM 7')"> ARTIFICIAL INTELLIGENCE </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 4','SEM 7')"> DEPARTMENT LEVEL OPTIONAL COURSE 3 </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 4','SEM 7')"> INSTITUTE LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub6" onclick="pass('INFT','YEAR 4','SEM 7')"> NETWORK DESIGN LAB </button>
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 4','SEM 7')"> ADVANCED SECURITY LAB </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 4','SEM 7')"> INTELLIGENCE SYSTEM LAB </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 4','SEM 7')"> ANDROID APPS DEVELOPMENT LAB </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 4','SEM 7')"> PROJECT 1 </button>
+		</div>
+	</div>
+
+	<div id="ISEM8">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('INFT','YEAR 4','SEM 8')"> BIG DATA ANALYTICS </button>
+			<button class="sub" id="sub2" onclick="pass('INFT','YEAR 4','SEM 8')"> INTERNET OF EVERYTHING </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 4','SEM 8')"> DEPARTMENT LEVEL OPTIONAL COURSE 4 </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 4','SEM 8')"> INSTITUTE LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 4','SEM 8')"> BIG DATA LAB </button>
+			<button class="sub" id="sub6" onclick="pass('INFT','YEAR 4','SEM 8')"> INTERNET OF EVERYTHING LAB </button>
+			<button class="sub" id="sub3" onclick="pass('INFT','YEAR 4','SEM 8')"> DEVOPS LAB </button>
+			<button class="sub" id="sub4" onclick="pass('INFT','YEAR 4','SEM 8')"> R PROGRAMMING LAB </button>
+			<button class="sub" id="sub5" onclick="pass('INFT','YEAR 4','SEM 8')"> PROJECT 2</button>
+		</div>
+	</div>
+
+	<div id="ESEM3">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 2','SEM 3')"> APPLIED MATHEMATICS 3 </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 2','SEM 3')"> ELECTRONIC DEVICES AND CIRCUITS 1 </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 2','SEM 3')"> DIGITAL SYSTEM DESIGN </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 2','SEM 3')"> CIRCUIT THEORY AND NETWORKS </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 2','SEM 3')"> ELECTRONIC INSTRUMENTATION AND CONTROL </button>
+			<button class="sub" id="sub6" onclick="pass('EXTC','YEAR 2','SEM 3')"> ELECTRONIC DEVICES AND CIRCUITS 1 LAB </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 2','SEM 3')"> DIGITAL SYSTEM DESIGN LAB </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 2','SEM 3')"> OOP USING JAVA LAB </button>
+		</div>
+	</div>
+
+	<div id="ESEM4">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 2','SEM 4')"> APPLIED MATHEMATICS 4 </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 2','SEM 4')"> ELECTRONIC DEVICES AND CIRCUITS 2 </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 2','SEM 4')"> LINEAR INTEGRATED CIRCUITS </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 2','SEM 4')"> SIGNALS AND SYSTEMS </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 2','SEM 4')"> PRINCIPLES OF COMMUNICATION ENGINEERING</button>
+			<button class="sub" id="sub6" onclick="pass('EXTC','YEAR 2','SEM 4')"> ELECTRONIC DEVICES AND CIRCUITS 2 LAB </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 2','SEM 4')"> LINEAR INTEGRATED CIRCUITS LAB </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 2','SEM 4')"> PRINCIPLES OF COMMUNICATION ENGINEERING LAB </button>
+		</div>
+	</div>
+
+	<div id="ESEM5">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 3','SEM 5')"> MICROPROCESSOR AND PERIPHERALS INTERFACING </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 3','SEM 5')"> DIGITAL COMMUNICATION </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 3','SEM 5')"> ELECTROMAGNETIC ENGINEERING </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 3','SEM 5')"> DISCRETE TIME SIGNAL PROCESSING </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 3','SEM 5')"> DEPARTMENT LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 3','SEM 5')"> MICROPROCESSOR AND PERIPHERALS INTERFACING LAB </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 3','SEM 5')"> DIGITAL COMMUNICATION LAB </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 3','SEM 5')"> BUSINESS COMMUNICATION AND ETHICS LAB </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 3','SEM 5')"> OPEN SOURCE TECHNOLOGY FOR COMMUNICATION LAB </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 3','SEM 5')"> DEPARTMENT LEVEL OPTIONAL COURSE 1 LAB </button>
+		</div>
+	</div>
+
+	<div id="ESEM6">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 3','SEM 6')"> MICROCONTROLLER AND APPLICATIONS </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 3','SEM 6')"> COMPUTER COMMUNICATION NETWORKS </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 3','SEM 6')"> ANTENNA AND RADIO WAVE PROPAGATION </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 3','SEM 6')"> IMAGE PROCESSING AND MACHINE VISION </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 3','SEM 6')"> DEPARTMENT LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 3','SEM 6')"> MICROCONTROLLER AND APPLICATIONS LAB </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 3','SEM 6')"> COMPUTER COMMUNICATION NETWORKS LAB </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 3','SEM 6')"> ANTENNA AND RADIO WAVE PROPAGATION LAB </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 3','SEM 6')"> IMAGE PROCESSING AND MACHINE VISION LAB </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 3','SEM 6')"> DEPARTMENT LEVEL OPTIONAL LAB 2 </button>
+		</div>
+	</div>
+
+	<div id="ESEM7">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 4','SEM 7')"> MICROWAVE ENGINEERING </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 4','SEM 7')"> MOBILE COMMUNICATION SYSTEM </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 4','SEM 7')"> OPTICAL COMMUNICATION </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 4','SEM 7')"> DEPARTMENT LEVEL OPTIONAL COURSE 3 </button>
+			<button class="sub" id="sub5" onclick="pass('EXTC','YEAR 4','SEM 7')"> INSTITUTE LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub6" onclick="pass('EXTC','YEAR 4','SEM 7')"> MICROWAVE ENGINEERING LAB </button>
+			<button class="sub" id="sub6" onclick="pass('EXTC','YEAR 4','SEM 7')"> MOBILE COMMUNICATION SYSTEM LAB </button>
+			<button class="sub" id="sub6" onclick="pass('EXTC','YEAR 4','SEM 7')"> OPTICAL COMMUNICATION LAB </button>
+			<button class="sub" id="sub6" onclick="pass('EXTC','YEAR 4','SEM 7')"> DEPARTMENT LEVEL OPTIONAL LAB 3 </button>
+			<button class="sub" id="sub6" onclick="pass('EXTC','YEAR 4','SEM 7')"> PROJECT 1 </button>
+		</div>
+	</div>
+
+	<div id="ESEM8">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('EXTC','YEAR 4','SEM 8')"> RF DESIGN </button>
+			<button class="sub" id="sub2" onclick="pass('EXTC','YEAR 4','SEM 8')"> WIRELESS NETWORKS  </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 4','SEM 8')"> DEPARTMENT LEVEL OPTIONAL COURSE 4 </button>
+			<button class="sub" id="sub3" onclick="pass('EXTC','YEAR 4','SEM 8')"> INSTITUTE LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 4','SEM 8')"> RF DESIGN LAB </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 4','SEM 8')"> WIRELESS NETWORKS LAB </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 4','SEM 8')"> DEPARTMENT LEVEL OPTIONAL LAB 4 </button>
+			<button class="sub" id="sub4" onclick="pass('EXTC','YEAR 4','SEM 8')"> PROJECT 2 </button>
+		</div>
+	</div>
+
+	<div id="ETSEM3">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 2','SEM 3')"> APPLIED MATHEMATICS 3 </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 2','SEM 3')"> ELECTRONIC DEVICES AND CIRCUITS 1 </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 2','SEM 3')"> DIGITAL CIRCUIT DESIGN </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 2','SEM 3')"> ELECTRICAL NETWORK ANALYSIS AND SYNTHESIS </button>
+			<button class="sub" id="sub5" onclick="pass('ETRX','YEAR 2','SEM 3')"> ELECTRONICS INSTRUMENTS AND MEASUREMENT </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 2','SEM 3')"> ELECTRONIC DEVICES AND CIRCUITS 1 LAB</button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 2','SEM 3')"> DIGITAL CIRCUIT DESIGN LAB</button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 2','SEM 3')"> ELECTRICAL NETWORK AND MEASUREMENT LAB </button>
+			<button class="sub" id="sub6" onclick="pass('ETRX','YEAR 2','SEM 3')"> OOPM LAB </button>
+		</div>
+	</div>
+
+	<div id="ETSEM4">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 2','SEM 4')"> APPLIED MATHEMATICS 4 </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 2','SEM 4')"> ELECTRONIC DEVICES AND CIRCUITS 2 </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 2','SEM 4')"> MICROPROCESSORS AND APPLICATIONS </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 2','SEM 4')"> DIGITAL SYSTEM DESIGN </button>
+			<button class="sub" id="sub5" onclick="pass('ETRX','YEAR 2','SEM 4')"> PRINCIPLES OF COMMUNICATION ENGINEERING </button>
+			<button class="sub" id="sub6" onclick="pass('ETRX','YEAR 2','SEM 4')"> LINEAR CONTROL SYSTEMS </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 2','SEM 4')"> ELECTRONIC DEVICES AND CIRCUITS 2 LAB  </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 2','SEM 4')"> MICROPROCESSORS AND APPLICATIONS LAB </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 2','SEM 4')"> DIGITAL SYSTEM DESIGN LAB </button>
+			<button class="sub" id="sub5" onclick="pass('ETRX','YEAR 2','SEM 4')"> PRINCIPLES OF COMMUNICATION ENGINEERING LAB </button>
+		</div>
+	</div>
+
+	<div id="ETSEM5">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 3','SEM 5')"> MICROCONTROLLERS AND APPLICATIONS </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 3','SEM 5')"> DIGITAL COMMUNICATION </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 3','SEM 5')"> ENGINEERING ELECTROMAGNETICS </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 3','SEM 5')"> DESIGN WITH LINEAR INTEGRATED CIRCUITS </button>
+			<button class="sub" id="sub5" onclick="pass('ETRX','YEAR 3','SEM 5')"> BUSINESS COMMUNICATION AND ETHICS </button>
+			<button class="sub" id="sub6" onclick="pass('ETRX','YEAR 3','SEM 5')"> DEPARTMENT LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 3','SEM 5')"> MICROCONTROLLERS AND APPLICATIONS LAB </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 3','SEM 5')"> DIGITAL COMMUNICATION LAB </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 3','SEM 5')"> DESIGN WITH LINEAR INTEGRATED CIRCUITS LAB </button>
+			<button class="sub" id="sub6" onclick="pass('ETRX','YEAR 3','SEM 5')"> DEPARTMENT LEVEL OPTIONAL COURSE 1 LAB </button>
+		</div>
+	</div>
+
+	<div id="ETSEM6">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 3','SEM 6')"> EMBEDDED SYSTEM AND RTOS </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 3','SEM 6')"> COMPUTER COMMUNICATION NETWORK </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 3','SEM 6')"> VLSI DESIGN </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 3','SEM 6')"> SIGNALS AND SYSTEMS </button>
+			<button class="sub" id="sub5" onclick="pass('ETRX','YEAR 3','SEM 6')"> DEPARTMENT LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 3','SEM 6')"> EMBEDDED SYSTEM AND RTOS LAB </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 3','SEM 6')"> COMPUTER COMMUNICATION NETWORK LAB </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 3','SEM 6')"> VLSI DESIGN LAB </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 3','SEM 6')"> SIGNALS AND SYSTEMS LAB </button>
+			<button class="sub" id="sub5" onclick="pass('ETRX','YEAR 3','SEM 6')"> DEPARTMENT LEVEL OPTIONAL COURSE 2 LAB </button>
+		</div>
+	</div>
+
+	<div id="ETSEM7">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 4','SEM 7')"> INSTRUMENTATION SYSTEM DESIGN </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 4','SEM 7')"> POWER ELECTRONICS </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 4','SEM 7')"> DIGITAL SIGNAL PROCESSING </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 4','SEM 7')"> DEPARTMENT LEVEL OPTIONAL COURSE 3 </button>
+			<button class="sub" id="sub5" onclick="pass('ETRX','YEAR 4','SEM 7')"> INSTITUTE LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 4','SEM 7')"> INSTRUMENTATION SYSTEM DESIGN LAB </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 4','SEM 7')"> POWER ELECTRONICS LAB </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 4','SEM 7')"> DIGITAL SIGNAL PROCESSING LAB </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 4','SEM 7')"> DEPARTMENT LEVEL OPTIONAL LAB 3 </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 4','SEM 7')"> PROJECT 1 </button>
+		</div>
+	</div>
+
+	<div id="ETSEM8">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 4','SEM 8')"> INTERNET OF THINGS </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 4','SEM 8')"> ANALOG AND  MIXED VLSI DESIGN </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 4','SEM 8')"> DEPARTMENT LEVEL OPTIONAL COURSE 4 </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 4','SEM 8')"> INSTITUTE LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub1" onclick="pass('ETRX','YEAR 4','SEM 8')"> INTERNET OF THINGS LAB </button>
+			<button class="sub" id="sub2" onclick="pass('ETRX','YEAR 4','SEM 8')"> ANALOG AND  MIXED VLSI DESIGN LAB </button>
+			<button class="sub" id="sub4" onclick="pass('ETRX','YEAR 4','SEM 8')"> DEPARTMENT LEVEL OPTIONAL LAB 4 </button>
+			<button class="sub" id="sub3" onclick="pass('ETRX','YEAR 4','SEM 8')"> PROJECT 2 </button>
+		</div>
+	</div>
+
+	<div id="BSEM3">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 2','SEM 3')"> APPLIED MATHEMATICS 3 </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 2','SEM 3')"> BASICS OF HUMAN PHYSIOLOGY </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 2','SEM 3')"> ELECTRICAL NETWORK ANALYSIS AND SYNTHESIS </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 2','SEM 3')"> ELECTRONIC CIRCUIT ANALYSIS AND DESIGN </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 2','SEM 3')"> BIOMATERIALS PROSTHETICS AND ORTHOTICS </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 2','SEM 3')"> OBJECT ORIENTED PROGRAMMING LAB </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 2','SEM 3')"> BASICS OF HUMAN PHYSIOLOGY LAB </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 2','SEM 3')"> ELECTRICAL NETWORK ANALYSIS AND SYNTHESIS LAB </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 2','SEM 3')"> ELECTRONIC CIRCUIT ANALYSIS AND DESIGN LAB </button>
+		</div>
+	</div>
+
+	<div id="BSEM4">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 2','SEM 4')"> APPLIED MATHEMATICS 4 </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 2','SEM 4')"> BIOMEDICAL TRANSDUCERS AND MEASURING INSTRUMENTS </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 2','SEM 4')"> LINEAR INTEGRATED CIRCUITS </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 2','SEM 4')"> DIGITAL ELECTRONICS </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 2','SEM 4')"> SIGNALS AND CONTROL SYSTEMS </button>
+			<button class="sub" id="sub6" onclick="pass('BIOMED','YEAR 2','SEM 4')"> INTRODUCTION TO SIMULATIONS TOOLS</button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 2','SEM 4')"> BIOMEDICAL TRANSDUCERS AND MEASURING INSTRUMENTS LAB </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 2','SEM 4')"> LINEAR INTEGRATED CIRCUITS LAB </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 2','SEM 4')"> DIGITAL ELECTRONICS LAB </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 2','SEM 4')"> SIGNALS AND CONTROL SYSTEMS LAB </button>
+		</div>
+	</div>
+
+	<div id="BSEM5">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 3','SEM 5')"> DIAGNOSTIC AND THREAPEUTIC INSTRUMENTS </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 3','SEM 5')"> ANALOG AND DIGITAL CIRCUIT DESIGN </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 3','SEM 5')"> PRINCIPLES OF COMMUNICATION ENGINEERING </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 3','SEM 5')"> BIOMEDICAL DIGITAL SIGNAL PROCESSING </button>
+			<button class="sub" id="sub6" onclick="pass('BIOMED','YEAR 3','SEM 5')"> DEPARTMENT LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 3','SEM 5')"> DIAGNOSTIC AND THREAPEUTIC INSTRUMENTS LAB </button>
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 3','SEM 5')"> BUSINESS COMMUNICATION AND ETHICS </button>
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 3','SEM 5')"> INTEGRATED AND COMMUNICATION CIRCUIT DESIGN LAB </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 3','SEM 5')"> BIOMEDICAL DIGITAL SIGNAL PROCESSING LAB </button>
+			<button class="sub" id="sub6" onclick="pass('BIOMED','YEAR 3','SEM 5')"> DEPARTMENT LEVEL OPTIONAL COURSE 1 LAB </button>
+
+
+		</div>
+	</div>
+
+	<div id="BSEM6">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 3','SEM 6')"> BIOMEDICAL MONITORING EQUIPMENT </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 3','SEM 6')"> MICROPROCESSORS AND MICROCONTROLLERS </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 3','SEM 6')"> DIGITAL IMAGE PROCESSING </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 3','SEM 6')"> MEDICAL INSTRUMENTS 1 </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 3','SEM 6')"> DEPARTMENT LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 3','SEM 6')"> BIOMEDICAL MONITORING EQUIPMENT LAB </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 3','SEM 6')"> MICROPROCESSORS AND MICROCONTROLLERS LAB </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 3','SEM 6')"> DIGITAL IMAGE PROCESSING LAB </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 3','SEM 6')"> MEDICAL INSTRUMENTS 1 LAB </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 3','SEM 6')"> DEPARTMENT LEVEL OPTIONAL COURSE 2 LAB </button>
+		</div>
+	</div>
+
+	<div id="BSEM7">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 4','SEM 7')"> LIFE SAVING AND SURGICAL EQUIPMENT </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 4','SEM 7')"> BASICS OF VLSI </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 4','SEM 7')"> MEDICAL IMAGING 1 </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 4','SEM 7')"> DEPARTMENT LEVEL OPTIONAL COURSE 3 </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 4','SEM 7')"> INSTITUTE LEVEL OPTIONAL COURSE 1 </button>
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 4','SEM 7')"> LIFE SAVING AND SURGICAL EQUIPMENT LAB </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 4','SEM 7')"> BASICS OF VLSI LAB </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 4','SEM 7')"> MEDICAL IMAGING 1 LAB </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 4','SEM 7')"> DEPARTMENT LEVEL OPTIONAL COURSE 3 LAB </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 4','SEM 7')"> PROJECT STAGE 1 </button>
+		</div>
+	</div>
+
+	<div id="BSEM8">
+		<div id="contentl2">
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 4','SEM 8')"> BIOMEDICAL MICROSYSTEMS </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 4','SEM 8')"> HOSPITAL MANAGEMENT </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 4','SEM 8')"> DEPARTMENT LEVEL OPTIONAL COURSE 4 </button>
+			<button class="sub" id="sub4" onclick="pass('BIOMED','YEAR 4','SEM 8')"> INSTITUTE LEVEL OPTIONAL COURSE 2 </button>
+			<button class="sub" id="sub1" onclick="pass('BIOMED','YEAR 4','SEM 8')"> BIOMEDICAL MICROSYSTEMS LAB </button>
+			<button class="sub" id="sub2" onclick="pass('BIOMED','YEAR 4','SEM 8')"> HOSPITAL MANAGEMENT LAB </button>
+			<button class="sub" id="sub3" onclick="pass('BIOMED','YEAR 4','SEM 8')"> DEPARTMENT LEVEL OPTIONAL COURSE 4 LAB </button>
+			<button class="sub" id="sub5" onclick="pass('BIOMED','YEAR 4','SEM 8')"> PROJECT STAGE 2 </button>
+		</div>
+	</div>
+-->
+<!--
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCGwPLJ3ZuAmLahDGRZmyxo61QHYVRSAW4",
+	    authDomain: "eattendence-56a59.firebaseapp.com",
+	    databaseURL: "https://eattendence-56a59.firebaseio.com",
+	    projectId: "eattendence-56a59",
+	    storageBucket: "eattendence-56a59.appspot.com",
+	    messagingSenderId: "63633641865",
+	    appId: "1:63633641865:web:6088e17079caab3dcc5158",
+	    measurementId: "G-RQB4M8TPGE"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
+-->
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAhmtYuCUhChQaNcAkhEGeZL_cQF0uF-5I",
+    authDomain: "v-attend.firebaseapp.com",
+    databaseURL: "https://v-attend.firebaseio.com",
+    projectId: "v-attend",
+    storageBucket: "v-attend.appspot.com",
+    messagingSenderId: "86619122961",
+    appId: "1:86619122961:web:574d780f4d2fdb1d4070b0",
+    measurementId: "G-Z0HE2BDR1G"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+        <script src="jscode.js"></script>
+
+    <script src="jquery.js"></script>
+    <script src="jqueryui/jquery-ui.js"></script>
+    <script>
+    	$(document).ready(function(){
+			$(".verticalMenu").menu().css({"font-weight":"bold","font-size":"20px"});
+			$("#sel").selectmenu({width:100});
+			$("#in1").autocomplete({source:["Prakash Parmar","Pravin","Ravindra Sangle","Snehal Andhare"]},{autoFocus:true},{minLength:2});
+    	});
+	</script>
+	<script src="sem.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<title>
+</title>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link type="text/css" href="stylesheet1.css" rel="stylesheet">
+<link type="text/css" href="jqueryui/jquery-ui.css" rel="stylesheet">
+<link type="text/css" href="jqueryui/jquery-ui.min.css" rel="stylesheet">
+<link type="text/css" href="jqueryui/jquery-ui.structure.css" rel="stylesheet">
+<link type="text/css" href="jqueryui/jquery-ui.structure.min.css" rel="stylesheet">
+<link type="text/css" href="jqueryui/jquery-ui.theme.css" rel="stylesheet">
+<link type="text/css" href="jqueryui/jquery-ui.theme.min.css" rel="stylesheet">
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+
+</head>
+<body>
+	<div class="header">
+		<h1 id="hd1">E&nbsp&nbsp ATTENDENCE</h1>
+		<button id="b1" onclick="home()" onmouseover="buttonChange1()" onmouseout="buttonOg1()">HOME</button>
+		<!--<button id="b2" onclick="login()" onmouseover="buttonChange2()" onmouseout="buttonOg2()">LOGIN / REGISTER</button>-->
+		<button id="b3" onclick="contact()" onmouseover="buttonChange3()" onmouseout="buttonOg3()">CONTACT</button>
+		<!--<button id="b4" onclick="about()" onmouseover="buttonChange4()" onmouseout="buttonOg4()">ABOUT US</button>-->
+	</div>
+	<div id="mainpage">
+	<div class="img1">
+		<img id="img1" src="Eimg.jpg">
+	</div>
+	<div class="content">
+		<div id="para">
+			<p id="p1">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp SMART &nbsp&nbsp & &nbsp&nbsp AGILE </p>
+			<p id="p2"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp SOLUTION &nbsp FOR </p>
+			<p id="p3">&nbsp&nbsp&nbsp&nbsp EFFICIENT &nbsp&nbsp ATTENDENCE</p>
+		</div>
+		<div id="butons">
+			<button id="b5" onclick="loginFaculty()">ATTENDENCE &nbsp TONGLE</button>
+			<button id="b6" onclick="adminTongle()">&nbsp&nbsp ADMIN &nbsp TONGLE &nbsp&nbsp</button>
+		</div>
+    </div>
+	</div>
+    <div id="form">
+		<h1 id="login">Login</h1>
+		<!--<label for="email">Email:</label>-->
+		<input type="email" id="email" placeholder="Username" required>
+		<!--<label for="password">Password:</label>-->
+		<input type="password" id="password" placeholder="Password" required>
+		<button id="loginButton" onclick="loginByFaculty()">Login</button><br>
+		<!--<button id="signUpButton">Sign Up</button>-->
+		<p id="forgot">Forgot Password?</p>
+	</div>
+	<div id="form1">
+		<h1 id="login">Login</h1>
+		<!--<label for="email">Email:</label>-->
+		<input type="email" id="email1" placeholder="Username" required>
+		<!--<label for="password">Password:</label>-->
+		<input type="password" id="password1" placeholder="Password" required>
+		<button id="loginButton" onclick="login()">Login</button><br>
+		<!--<button id="signUpButton">Sign Up</button>-->
+		<p id="forgot">Forgot Password?</p>
+	</div>
+<!--
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCGwPLJ3ZuAmLahDGRZmyxo61QHYVRSAW4",
+	    authDomain: "eattendence-56a59.firebaseapp.com",
+	    databaseURL: "https://eattendence-56a59.firebaseio.com",
+	    projectId: "eattendence-56a59",
+	    storageBucket: "eattendence-56a59.appspot.com",
+	    messagingSenderId: "63633641865",
+	    appId: "1:63633641865:web:6088e17079caab3dcc5158",
+	    measurementId: "G-RQB4M8TPGE"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
+	
+	<script src="jscode.js"></script>
+    <script>
+    	firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+	  // User is signed in.
+	window.location="admin2.html";	
+  
+	}
+});
+	</script>
+-->
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAhmtYuCUhChQaNcAkhEGeZL_cQF0uF-5I",
+    authDomain: "v-attend.firebaseapp.com",
+    databaseURL: "https://v-attend.firebaseio.com",
+    projectId: "v-attend",
+    storageBucket: "v-attend.appspot.com",
+    messagingSenderId: "86619122961",
+    appId: "1:86619122961:web:574d780f4d2fdb1d4070b0",
+    measurementId: "G-Z0HE2BDR1G"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+ 
+</script>
+	<script src="jscode.js"></script>
+    <script>
+    	firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+	  // User is signed in.
+	window.location="admin2.html";	
+  
+	}
+});
+	</script>
+	<script src="jquery.js"></script>
+    <script src="jqueryui/jquery-ui.js"></script>
+</body>
+</html>

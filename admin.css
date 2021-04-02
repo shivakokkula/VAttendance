@@ -1,0 +1,145 @@
+html,body{
+	height:100%;
+	margin:0;
+	padding: 0;
+}
+.note{
+	background-color:#66ff66;
+	border-left:6px solid #009900;
+
+}
+#maincontainer{
+	text-align: center;
+}
+.bg{
+	background-image: url('admin.jpg');
+	height:100%;
+	width:60%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	float:left;
+	margin:0;
+}
+#h11{
+	position:absolute;
+	top:50%;
+	left:30%;
+	transform:translate(-50%,-50%);
+	font-size:200%;
+	font-family: Palatino Linotype;
+	letter-spacing: 0.2em;
+}
+#right,#b1,#b2,#b3,#h2{
+	text-align: center;
+	margin:0;
+}
+#h2{
+	transform: translate(0%,250%);
+}
+#b1,#b2,#b3,#b4{
+
+	margin:1%;
+	border-radius:10%;
+	padding:1%;
+	font-size:100%;
+	margin-top:1%;
+	text-align:center;
+	width:27%;
+	letter-spacing: 0.2em;
+	height:15%;
+	margin-left:6%;
+	box-shadow: 0 500% rgb(0,0,0);
+	font-family: Palatino Linotype;
+	text-shadow:100%;
+	color:black;
+	border-color: black;
+	font-weight: bold;
+}
+#b1{
+	margin-top:7%;
+	transform: translate(0%,50%);
+	background: linear-gradient(orange,#fffbd5);	
+}
+#b2{
+	transform: translate(0%,60%);
+	background: linear-gradient(purple,#fffbd5);
+}
+#b3{
+	transform: translate(0%,70%);
+	background: linear-gradient(#6d6027,#fffbd5);
+}
+#b4{
+	transform: translate(0%,90%);
+	background: linear-gradient(#544a7d,#fffbd5);
+}
+/*-----------------------------------------------------------admin2.html--------------------------------------------------------*/
+#header{
+	margin:0;
+	background: linear-gradient(#302b63,#24243e);;
+	text-align: center;
+	margin-top: 0;
+	height:7%;
+}
+#h3{
+	background-color: linear-gradient(#302b63,#24243e);
+	margin-top: 0;
+	color:white;
+	letter-spacing: 0.2em;
+	padding: 1%;
+	display: inline;
+
+}
+#submit1,#submit2,#submit3,#submit4,#div11,#div12,#div13,#div21,#div31,#div32,#div51,#div52,#div53,#div41,#div42,#div43,#div44,#div45,#div46{
+	margin:2%;
+	font-size: 150%;
+	text-align: center;
+}
+/*
+#div21{
+	margin-top:5%;
+}
+#text1{
+	margin-left:10%;
+}
+#text2,#text5{
+	margin-left: 10%;
+}
+#text3,#text6{
+	margin-left:3%;
+}
+#text4{
+	margin-left:4%;
+}
+#b11,#b12,#b13,#b14{
+	margin-top:4%;
+	margin-left:25%;
+	border-radius:10%;
+}
+#sem,#branch{
+	margin-left: 20px;
+}
+#sub{
+	margin-left: 10%;
+	width:40%;
+}
+#b13{
+	margin-left: 15%;
+}
+#b12{
+	margin-top:8%;
+}*/
+#sub{
+	width:30%;
+}
+#div45{
+	margin-left:20%;
+}
+.log{
+	margin-top: 0.5%;
+	float: right;
+	padding: 0.5%;
+}/*
+#branchn,#batchn,#yearn,#divn{
+	margin-left: 7%;
+}*/

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="admin.css">
+	<link type="text/css" href="jqueryui/jquery-ui.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.structure.css" rel="stylesheet">
+	<link type="text/css" href="jqueryui/jquery-ui.theme.css" rel="stylesheet">
+
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="xlsx.full.min.js"></script>
+</head>
+<body>
+
+	<div id="header">
+		<h1 id="h3">ADMIN PORTAL</h1>
+		<button class="log" onclick="logout()">LOGOUT</button>
+	</div>
+	<div class="main">
+		<div id="maincontainer">
+			<ul id="list">
+				<li><a href="#div1">ADD FACULTY</a></li>
+				<li><a href="#div2">REMOVE FACULTY </a></li>
+				<li><a href="#div3">UPDATE FACULTY PASSWORD</a></li>
+				<li><a href="#div4">UPDATE STUDENT DETAILS</a></li>
+				<li><a href="#div5">ADD SUBJECT DETAILS</a></li>
+				<li><a href="#div6">REMOVE SUBJECT DETAILS</a></li>
+			
+			</ul>
+			<div id="div1">
+				<div id="div11">
+					<label for="tname">TEACHER'S NAME :</label>
+					<input type="text" id="text1" placeholder="Enter Teacher's Name" name="tname" required>
+				</div>
+				<div id="div12">
+					<label for="tid">TEACHER'S EMAIL :</label>
+					<input type="text" id="text2" placeholder="Enter Teacher's UserId" name="tname" required>
+				</div>
+				<div id="div13">
+					<label for="tname">TEACHER'S PASSWORD :</label>
+					<input type="text" id="text3" placeholder="Enter Teacher's Password" name="tname" required>
+				</div>
+				<div id="submit1">
+					<button onclick="addFaculty()" id="b11">SUBMIT</button>
+				</div>
+			</div>
+			<div id="div2">
+				<div id="div21">
+					<label for="rid">TEACHER'S EMAIL :</label>
+					<input type="text" id="text4" placeholder="Enter Teacher's UserId" name="tname" required>
+				</div>
+				<div id="submit2">
+					<button id="b12" onclick="removeFaculty()">SUBMIT1</button>
+				</div>
+			</div>
+			<div id="div3">
+				<div id="div31">
+					<label>TEACHER'S EMAIL :</label>
+					<input type="text" id="text5" placeholder="Enter Email" required>
+				</div>
+				<div id="div32">
+					<label>TEACHER'S PASSWORD :</label>
+					<input type="text" id="text6" placeholder="Enter Password" required>
+				</div>
+				<div id="submit3">
+					<button id="b13" onclick="updatedata()">CLICK HERE TO UPDATE</button>
+				</div>
+
+			</div>
+			<div id="div4">
+				<div id="div41">
+				<label for="BRANCH">SELECT BRANCH:</label>
+				<select id="BRANCH">
+					<option id="branch1">CMPN</option>
+					<option id="branch2">INFT</option>
+					<option id="branch3">EXTC</option>
+					<option id="branch4">ETRX</option>
+					<option id="branch5">BIOM</option>
+				</select>
+				</div>
+				<div id="div42">
+				<label for="YEAR">SELECT YEAR:</label>
+				<select id="YEAR">
+					<option id="year1">YEAR 1</option>
+					<option id="year2">YEAR 2</option>
+					<option id="year3">YEAR 3</option>
+					<option id="year4">YEAR 4</option>
+				</select>
+				</div>
+				<div id="div43">
+				<label for="DIV">SELECT DIV:</label>
+				<select id="DIV">
+					<option id="div1">DIV A</option>
+					<option id="div2">DIV B</option>
+					<option id="div3">DIV C</option>
+				</select>
+				</div>
+				<div id="div44">
+				<label for="BATCH">SELECT BATCH:</label>
+				<select id="BATCH">
+					<option id="batch1">BATCH 1</option>
+					<option id="batch2">BATCH 2</option>
+					<option id="batch3">BATCH 3</option>
+				</select>
+				</div>
+				<div id="div45">
+				<input type="file" id="input" accept=".xls,.xlsx"  >
+				</div>
+				<div id="div46">
+				<button id="button">UPLOAD</button>
+				</div>
+			</div>
+			<div id="div5">
+				<div id="div51">
+					<div class="note">
+						<p>Do not write any special character(like @,.,*,$,%,etc) only use alphabets and numerals to enter subject details</p>
+					</div>
+					<label for="branch">SELECT BRANCH:</label>
+					<select id="branch">
+						<option id="branch1">CMPN</option>
+						<option id="branch2">INFT</option>
+						<option id="branch3">EXTC</option>
+						<option id="branch4">ETRX</option>
+						<option id="branch5">BIOM</option>
+					</select>
+				</div>
+				<div id="div52">
+					<label for="sem">SELECT SEM:</label>
+					<select id="sem">
+						<option id="sem1">SEM 1</option>
+						<option id="sem2">SEM 2</option>
+						<option id="sem3">SEM 3</option>
+						<option id="sem4">SEM 4</option>
+						<option id="sem5">SEM 5</option>
+						<option id="sem6">SEM 6</option>
+						<option id="sem7">SEM 7</option>
+						<option id="sem8">SEM 8</option>
+					</select>
+				</div>
+
+				<div id="div52">
+					<label for="thprac">SELECT TH/PRAC:</label>
+					<select id="thprac">
+						<option id="theory">THEORY</option>
+						<option id="practical">PRACTICAL</option>
+					</select>
+				</div>
+				<div id="div53">
+					<label for="sub">ENTER SUBJECT:</label>
+					<input type="text" id="sub" placeholder="Enter subject you want to add" name="sub" required>
+				</div>
+				
+				<div id="submit4">
+					<button id="b14" onclick="updatesubjectdata()">CLICK HERE TO ADD SUBJECT</button>
+				</div>
+				<!--<div id="submit4">
+					<button id="b14" onclick="viewsubjectdata()">CLICK HERE TO VIEW ADDED SUBJECT</button>
+				</div>-->
+			
+			</div>
+			<div id="div6">
+				<div id="div51">
+					<label for="branch">SELECT BRANCH:</label>
+					<select id="branchn">
+						<option id="branch1">CMPN</option>
+						<option id="branch2">INFT</option>
+						<option id="branch3">EXTC</option>
+						<option id="branch4">ETRX</option>
+						<option id="branch5">BIOM</option>
+					</select>
+				</div>
+				<div id="div52">
+					<label for="sem">SELECT SEM:</label>
+					<select id="semn">
+						<option id="sem1">SEM 1</option>
+						<option id="sem2">SEM 2</option>
+						<option id="sem3">SEM 3</option>
+						<option id="sem4">SEM 4</option>
+						<option id="sem5">SEM 5</option>
+						<option id="sem6">SEM 6</option>
+						<option id="sem7">SEM 7</option>
+						<option id="sem8">SEM 8</option>
+					</select>
+				</div>
+				<div id="div52">
+					<label for="thprac">SELECT TH/PRAC:</label>
+					<select id="thprac1">
+						<option id="theory">THEORY</option>
+						<option id="practical">PRACTICAL</option>
+					</select>
+				</div>
+				
+				<div id="submit4">
+					<button id="b14" onclick="removesubjectdata()">CLICK HERE TO REMOVE</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCGwPLJ3ZuAmLahDGRZmyxo61QHYVRSAW4",
+	    authDomain: "eattendence-56a59.firebaseapp.com",
+	    databaseURL: "https://eattendence-56a59.firebaseio.com",
+	    projectId: "eattendence-56a59",
+	    storageBucket: "eattendence-56a59.appspot.com",
+	    messagingSenderId: "63633641865",
+	    appId: "1:63633641865:web:6088e17079caab3dcc5158",
+	    measurementId: "G-RQB4M8TPGE"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>-->
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAhmtYuCUhChQaNcAkhEGeZL_cQF0uF-5I",
+    authDomain: "v-attend.firebaseapp.com",
+    databaseURL: "https://v-attend.firebaseio.com",
+    projectId: "v-attend",
+    storageBucket: "v-attend.appspot.com",
+    messagingSenderId: "86619122961",
+    appId: "1:86619122961:web:574d780f4d2fdb1d4070b0",
+    measurementId: "G-Z0HE2BDR1G"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+ 
+</script>
+	<script>
+	            firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+        }
+        else{
+            window.location="ht1.html";
+        }
+    });
+        </script>
+
+	<script src="admin.js"></script>
+	<script src="jquery.js"></script>
+    <script src="jqueryui/jquery-ui.js"></script>	
+    <script>
+    	$(document).ready(function()
+    	{
+    		$('#maincontainer').tabs();
+    		$('#branch').selectmenu();
+    		
+    		$('#sem').selectmenu();
+    		$('#semn').selectmenu();
+    		$('#branchn').selectmenu();
+    		$("#thprac").selectmenu();
+    		$("#thprac1").selectmenu();
+    	})
+    </script>
+</body>
+</html>

@@ -1,0 +1,1484 @@
+/*DIV='DIV A';
+BRANCH='CMPN';
+SEM='SEM 1';
+YEAR='YEAR 1';*/
+firebaseRef=firebase.database().ref();
+firebaseSubject=firebaseRef.child("SUBJECT");
+document.getElementById("Hours1").checked=true;
+/*var a=document.querySelector('#Lecturetype').value;*/
+/*function sem1(branch,div)
+{
+    firebaseInner=firebaseSubject.child(branch).child(sem).child(a);
+    if(a=="Theory")
+    {
+        var ele=document.createElement("label");
+        var dp=document.getElementById("dropdown1");
+        dp.appendChild(ele);
+        var text=document.createTextNode("Select Subject:");
+        ele.appendChild(text);
+        var sel=document.createElement("select");
+        dp.appendChild(sel);
+
+    }
+}*/
+function sem(branch,div,sem,year)
+{
+    localStorage.setItem("BRANCH",branch);
+    localStorage.setItem("DIV",div);
+    localStorage.setItem("SEM",sem);
+    localStorage.setItem("YEAR",year);
+    $("#WELCOME1").hide();
+    $('#lbb1,#subject,#h1text').hide();
+    document.getElementById("dropdown").style.display="block";
+    document.getElementById("dropdown1").style.display="block";
+    document.getElementById("th").checked=false;
+    document.getElementById("prac").checked=false;
+}
+    function myFunction(a){
+        h=a;
+        b=localStorage.getItem("BRANCH");
+        c=localStorage.getItem("DIV");
+        d=localStorage.getItem("SEM");
+        f=b+'   '+c+'   '+d;
+        var labelsub=document.getElementById("lbb1"); 
+        var select=document.getElementById("subject");
+        var selecth1=document.getElementById("h1text");
+        var but1=document.getElementById("bsubmit");
+        var p11=document.getElementById("p1");
+        
+        /*var br1=document.getElementsByTagName("br");
+        */if(select!=null)
+        {
+        select.remove();
+        labelsub.remove();
+        selecth1.remove();
+        but1.remove();
+        p1.remove();
+        }
+        /*var br1=document.createElement("br");
+        */var h11=document.createElement("h1");
+        var ele=document.createElement("label");
+        var dp=document.getElementById("dropdown1");
+        /*dp.appendChild(br1);
+        */dp.appendChild(h11);
+        dp.appendChild(ele);
+        h11.appendChild(document.createTextNode(f));
+        var text=document.createTextNode("Select Subject : ");
+        ele.appendChild(text);
+        var sel=document.createElement("select");
+        dp.appendChild(sel);
+        var h1attr=document.createAttribute("id");
+        h1attr.value="h1text";
+        h11.setAttributeNode(h1attr);
+        
+        var selattr=document.createAttribute("id");
+        selattr.value="subject";
+        sel.setAttributeNode(selattr);
+        var labattr=document.createAttribute("id");
+        labattr.value="lbb1";
+        ele.setAttributeNode(labattr);
+        var pp=document.createElement('p');
+        dp.appendChild(pp);
+        var pattr=document.createAttribute("id");
+        pattr.value="p1";
+        pp.setAttributeNode(pattr);
+        
+        firebaseInner=firebaseSubject.child(b).child(a).child(d);
+        firebaseInner.once('value',function(snapshot)
+        {
+            snapshot.forEach(function(childSnapshot){
+                var opt=document.createElement('option');
+                sel.appendChild(opt);
+                var textopt=document.createTextNode(childSnapshot.val());
+                opt.appendChild(textopt);
+                
+            });
+        });
+        var b1=document.createElement("button");
+        dp.appendChild(b1);
+        var textb1=document.createTextNode("SUBMIT");
+        b1.appendChild(textb1);
+        var b1attr=document.createAttribute("onclick");
+        b1attr.value="pass()";
+        b1.setAttributeNode(b1attr);
+        var b2attr=document.createAttribute("id");
+        b2attr.value="bsubmit";
+        b1.setAttributeNode(b2attr);
+        /*$("#subject").selectmenu({width:200;height:50;});
+        */
+    }
+
+function pass()
+{
+    i=confirm("Your changes are final");
+    if(i==true)
+    {
+        BRANCH=localStorage.getItem("BRANCH");
+        DIV=localStorage.getItem("DIV");
+        SEM=localStorage.getItem("SEM");
+        YEAR=localStorage.getItem("YEAR");
+        SUB=document.querySelector("#subject").value;
+        timeslot=document.querySelector("#timeslot");
+        TIMESLOT=timeslot.value;
+        if(document.getElementById("Hours1").checked==true)
+        {
+            hours=1;
+            PASS(BRANCH,YEAR,SEM,SUB);
+        }
+        else if(document.getElementById("Hours2").checked==true)
+        {
+            if(TIMESLOT=="8:00 AM" || TIMESLOT=="9:00 AM" || TIMESLOT=="11:15 AM" || TIMESLOT=="1:45 PM" || TIMESLOT=="2:45 PM" || TIMESLOT=="3:45 PM")
+            {
+                hours=2;
+                PASS(BRANCH,YEAR,SEM,SUB);
+            }
+            else
+            {
+                window.alert("2 Hours lecture cannot be taken at Timeslot : "+TIMESLOT);
+            }
+        }
+        else
+        {
+            if(TIMESLOT=="8:00 AM" || TIMESLOT=="1:45 PM" || TIMESLOT=="2:45 PM")
+            {
+                hours=3;
+                PASS(BRANCH,YEAR,SEM,SUB);
+            }
+            else
+            {
+                window.alert("3 Hours lecture cannot be taken at Timeslot : "+TIMESLOT);
+            }
+        }
+    }
+}
+
+function PASS(BRANCH,YEAR,SEM,SUB)
+{
+    var today=new Date();
+    var year=today.getFullYear();
+    var month=today.getMonth()+1;
+    var day=today.getDate();
+    var date=day+'-'+month+'-'+year+'{'+TIMESLOT+'}';
+    localStorage.setItem("hours",hours);
+    localStorage.setItem("TIMESLOT",TIMESLOT);
+    localStorage.setItem("BRANCH",BRANCH);
+    localStorage.setItem("YEAR",YEAR);
+    localStorage.setItem("SEM",SEM);
+    localStorage.setItem("DIV",DIV);
+    localStorage.setItem("SUB",SUB);
+    if(h=="THEORY")
+    {
+        TheoryRef=firebaseRef.child("THEORY").child(BRANCH).child(YEAR).child(SEM).child(DIV);
+        var z=0;
+        TheoryRef.once('value', function(snapshot)
+        {
+            snapshot.forEach(function(childSnapshot)
+            {
+                childSnapshot.forEach(function(innerchildSnapshot)
+                {
+                    z=0;
+                    if(innerchildSnapshot.hasChild(date)==true) 
+                    {
+                        z=1;
+                    }
+                });
+            });
+            if(z==1)
+            {
+                window.alert("Attendance for this slot is already being taken")
+            }
+            else
+            {
+                window.location="am.html";
+            }
+        });
+    }
+    else
+    {
+        var batch=document.querySelector("#batch");
+        BATCH=batch.value;
+        localStorage.setItem("BATCH",BATCH);
+        PracticalRef=firebaseRef.child("PRACTICAL").child(BRANCH).child(YEAR).child(SEM).child(DIV).child(BATCH);
+        var z=0;
+        PracticalRef.once('value', function(snapshot)
+        {
+            snapshot.forEach(function(childSnapshot)
+            {
+                childSnapshot.forEach(function(innerchildSnapshot)
+                {
+                    z=0;
+                    if(innerchildSnapshot.hasChild(date)==true) 
+                    {
+                        z=1;
+                    }
+                });
+            });
+            if(z==1)
+            {
+                window.alert("Attendance for this slot is already being taken")
+            }
+            else
+            {
+                window.location="amprac.html";
+            }
+        });
+    }
+}
+/*
+function sem1(branch,div)
+{
+    BRANCH=branch;
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("SEM1").style.display="block";
+}
+
+function sem2(branch,div)
+{
+    BRANCH=branch;
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("SEM2").style.display="block";
+}
+*/
+/*
+function pass1(SEM,SUB)
+{
+    timeslot=document.querySelector("#timeslot");
+    TIMESLOT=timeslot.value;
+    if(document.getElementById("Hours1").checked==true)
+    {
+        hours=1;
+        PASS(BRANCH,YEAR,SEM,SUB);
+    }
+    else if(document.getElementById("Hours2").checked==true)
+    {
+        if(TIMESLOT=="8:00 AM" || TIMESLOT=="9:00 AM" || TIMESLOT=="11:15 AM" || TIMESLOT=="1:15 AM" || TIMESLOT=="2:15 AM" || TIMESLOT=="3:15 AM")
+        {
+            hours=2;
+            PASS(BRANCH,YEAR,SEM,SUB);
+        }
+        else
+        {
+            window.alert("2 Hours lecture cannot be taken at Timeslot : "+TIMESLOT);
+        }
+    }
+    else
+    {
+        if(TIMESLOT=="8:00 AM" || TIMESLOT=="1:15 AM" || TIMESLOT=="2:15 AM")
+        {
+            hours=3;
+            PASS(BRANCH,YEAR,SEM,SUB);
+        }
+        else
+        {
+            window.alert("3 Hours lecture cannot be taken at Timeslot : "+TIMESLOT);
+        }
+    }
+}
+*/
+/*
+function Csem3(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("CSEM3").style.display="block";
+}
+
+function Csem4(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("CSEM4").style.display="block";
+}
+
+function Csem5(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("CSEM5").style.display="block";
+}
+
+function Csem6(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("CSEM6").style.display="block";
+}
+
+function Csem7(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("CSEM7").style.display="block";
+}
+
+function Csem8(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("CSEM8").style.display="block";
+}
+
+function Isem3(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ISEM3").style.display="block";
+}
+
+function Isem4(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ISEM4").style.display="block";
+}
+
+function Isem5(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ISEM5").style.display="block";
+}
+
+function Isem6(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ISEM6").style.display="block";
+}
+
+function Isem7(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ISEM7").style.display="block";
+}
+
+function Isem8(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ISEM8").style.display="block";
+}
+
+function Esem3(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ESEM3").style.display="block";
+}
+
+function Esem4(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ESEM4").style.display="block";
+}
+
+function Esem5(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ESEM5").style.display="block";
+
+}
+
+function Esem6(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ESEM6").style.display="block";
+}
+
+function Esem7(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ESEM7").style.display="block";
+
+}
+
+function Esem8(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ESEM8").style.display="block";
+}
+
+function ETsem3(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ETSEM3").style.display="block";
+}
+
+function ETsem4(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ETSEM4").style.display="block";
+}
+
+function ETsem5(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ETSEM5").style.display="block";
+}
+
+function ETsem6(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ETSEM6").style.display="block";
+}
+
+function ETsem7(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ETSEM7").style.display="block";
+}
+
+function ETsem8(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("ETSEM8").style.display="block";
+}
+
+function Bsem3(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("BSEM3").style.display="block";
+}
+
+function Bsem4(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("BSEM4").style.display="block";
+}
+
+function Bsem5(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("BSEM5").style.display="block";
+}
+
+function Bsem6(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM7").hide();
+    $("#BSEM8").hide();
+    document.getElementById("BSEM6").style.display="block";
+}
+
+function Bsem7(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM8").hide();
+    document.getElementById("BSEM7").style.display="block";
+}
+
+function Bsem8(div)
+{
+    DIV=div;
+    $("#WELCOME1").hide();
+    $("#SEM1").hide();
+    $("#SEM2").hide();
+    $("#CSEM3").hide();
+    $("#CSEM4").hide();
+    $("#CSEM5").hide();
+    $("#CSEM6").hide();
+    $("#CSEM7").hide();
+    $("#CSEM8").hide();
+    $("#ISEM3").hide();
+    $("#ISEM4").hide();
+    $("#ISEM5").hide();
+    $("#ISEM6").hide();
+    $("#ISEM7").hide();
+    $("#ISEM8").hide();
+    $("#ESEM3").hide();
+    $("#ESEM4").hide();
+    $("#ESEM5").hide();
+    $("#ESEM6").hide();
+    $("#ESEM7").hide();
+    $("#ESEM8").hide();
+    $("#ETSEM3").hide();
+    $("#ETSEM4").hide();
+    $("#ETSEM5").hide();
+    $("#ETSEM6").hide();
+    $("#ETSEM7").hide();
+    $("#ETSEM8").hide();
+    $("#BSEM3").hide();
+    $("#BSEM4").hide();
+    $("#BSEM5").hide();
+    $("#BSEM6").hide();
+    $("#BSEM7").hide();
+    document.getElementById("BSEM8").style.display="block";
+}
+*/
